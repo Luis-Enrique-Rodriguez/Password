@@ -1,0 +1,30 @@
+create table usuario(
+id_usuario serial primary key,
+primer_apellido varchar(100),
+segundo_apellido varchar(100),
+correo varchar(50) not null,
+contrasena varchar(32) not null,
+unique(correo)
+);
+
+create table empleado(id_empleado serial primary key,
+nombre varchar(100) not null,
+rfc varchar(13) not null,
+curp varchar(18) not null,
+nacimiento date,
+id_usuario int references usuario (id_usuario));
+--------------------------------------------------------------
+mariadb
+create table usuario(
+id_usuario integer primary key,
+correo varchar(50) not null,
+contrasena varchar(32) not null,
+unique(correo)
+);
+
+create table empleado(id_empleado integer primary key auto_increment,
+nombre varchar(100) not null,
+rfc varchar(13) not null,
+curp varchar(18) not null,
+nacimiento date,
+id_usuario int references usuario (id_usuario));
